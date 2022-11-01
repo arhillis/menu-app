@@ -10,10 +10,13 @@ import Modal from './components/modal';
 
 function App() {
   const context = useMenuContext();
-
+  const {meals} = context;
+  if(meals){
+    console.log(meals);
+  }
+  
   return (
     <div className="App">
-      {context.message}
       <SearchBar />
       <Favorites />
       <Meals />
