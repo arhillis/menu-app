@@ -6,13 +6,19 @@ const randomMealUrl = 'https://www.themealdb.com/api/json/v1/1/random.php';
 const MenuContext = React.createContext();
 
 const MenuProvider = ({children}) =>{
+    const [loading, setLoading] = useState(false); 
     const [meals, setMeals] = useState([]);
 
     const getMealData = async (url) =>{
-        fetch(url)
-            .then(res => res.json())
-            .then(data => setMeals(data.meals))
-            .catch(err => console.log('SOMETHING WENT WRONG!!!'))
+        setLoading(true);
+        try{
+            const res = await fetch(url);
+            const data = await res.json();
+            setMeals(data.meals)
+        }catch(err){
+            console.log(err.message)
+        }
+        setLoading(false)
     }
 
     useEffect(() =>{
@@ -21,7 +27,7 @@ const MenuProvider = ({children}) =>{
 
     return <MenuContext.Provider
         value={{
-            message: 'Hola mundo',
+            loading,
             meals
         }}
     >
