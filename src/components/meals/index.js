@@ -8,7 +8,7 @@ function Meals(){
         return (<section className='section section-center'>
                     <h4>Loading meals...</h4>
                 </section>)
-    if(meals) {
+    if(meals.length > 0) {
         console.log('from meals component', meals[0]);
         return (<section className='section section-center'>
                         {meals.map((meal, index) => 
