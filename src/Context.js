@@ -7,7 +7,8 @@ const MenuContext = React.createContext();
 
 const MenuProvider = ({children}) =>{
     const [loading, setLoading] = useState(false); 
-    const [meals, setMeals] = useState([]);
+    const [meals, setMeals] = useState(null);
+    const [searchValue, setSearchValue] = useState('');
     const [numCalls, setNumCalls] = useState(0);//keeps track of the number of calls made
 
     
@@ -22,8 +23,7 @@ const MenuProvider = ({children}) =>{
                 setNumCalls(calls)
             const res = await fetch(url);
             const data = await res.json();
-            if(data.meals.length > 0) setMeals(data.meals)
-            else setMeals([]);
+            setMeals(data.meals)
             calls++
             setNumCalls(calls)
             localStorage.setItem('numCalls', JSON.stringify(calls))
@@ -34,13 +34,20 @@ const MenuProvider = ({children}) =>{
     }
 
     useEffect(() =>{
+        getMealData(`${allMealsUrl}${searchValue}`)
+    }, [searchValue])
+
+    useEffect(() =>{
         getMealData(allMealsUrl)
     }, []);
 
     return <MenuContext.Provider
         value={{
             loading,
-            meals
+            meals,
+            getMealData,
+            allMealsUrl,
+            setSearchValue
         }}
     >
         {children}
