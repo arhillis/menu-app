@@ -22,7 +22,8 @@ const MenuProvider = ({children}) =>{
                 setNumCalls(calls)
             const res = await fetch(url);
             const data = await res.json();
-            setMeals(data.meals)
+            if(data.meals.length > 0) setMeals(data.meals)
+            else setMeals([]);
             calls++
             setNumCalls(calls)
             localStorage.setItem('numCalls', JSON.stringify(calls))
