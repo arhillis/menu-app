@@ -33,7 +33,14 @@ const MenuProvider = ({children}) =>{
         setLoading(false)
     }
 
+    const getRandomMeal = (e) =>{ 
+        e.preventDefault();
+        setSearchValue('');
+        getMealData(randomMealUrl)
+    };
+
     useEffect(() =>{
+        if(!searchValue) return;
         getMealData(`${allMealsUrl}${searchValue}`)
     }, [searchValue])
 
@@ -47,7 +54,8 @@ const MenuProvider = ({children}) =>{
             meals,
             getMealData,
             allMealsUrl,
-            setSearchValue
+            setSearchValue,
+            getRandomMeal
         }}
     >
         {children}

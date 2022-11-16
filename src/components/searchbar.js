@@ -2,7 +2,7 @@ import {useState} from 'react';
 import {useMenuContext} from '../Context';
 
 function SearchBar(){
-    const {allMealsUrl, getMealData} = useMenuContext();
+    const {allMealsUrl, getMealData, getRandomMeal} = useMenuContext();
     const [searchValue, setSearchValue] = useState('');
 
     const handleSearchChange = (e) =>{
@@ -26,7 +26,7 @@ function SearchBar(){
                 value={searchValue}
                 onChange={handleSearchChange}/>
             <button className="btn" onClick={handleSearch}>Search</button>
-            <button className="btn btn-hipster">Suprise me!</button>
+            <button className="btn btn-hipster" onClick={getRandomMeal}>Suprise me!</button>
         </form>
     </div>)
 }
