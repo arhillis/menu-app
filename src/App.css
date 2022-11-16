@@ -332,10 +332,12 @@ ul {
 
 .single-meal footer {
     padding: 1rem 1.5rem;
-    display: flex;
+    /* display: flex;
     align-items: center;
     justify-content: space-between;
-    flex-wrap: wrap;
+    flex-wrap: wrap; */
+    display: grid;
+    grid-template-columns: 3fr 1fr;
 }
 
 .like-btn {
@@ -405,4 +407,9 @@ ul {
 .close-btn {
     background: var(--red-dark);
     color: var(--white);
+}
+
+footer {
+    display: grid;
+    grid-template-columns: 3fr 1fr;
 }
