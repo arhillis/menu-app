@@ -382,6 +382,9 @@ ul {
     height: 15rem;
     border-top-left-radius: var(--borderRadius);
     border-top-right-radius: var(--borderRadius);
+    width: 100%;
+    -o-object-fit: cover;
+    object-fit: cover;
 }
 
 .modal-content {
@@ -393,15 +396,23 @@ ul {
 }
 
 .modal-content a {
-    display: block;
+    display: flex;
+    align-items: center;
     color: var(--primary-500);
     margin-bottom: 1rem;
-    text-decoration: underline;
+    transition: var(--transition);
+}
+
+.modal-content a svg {
     transition: var(--transition);
 }
 
 .modal-content a:hover {
     color: var(--black)
+}
+
+.modal-content a:hover>svg {
+    color: var(--red-dark);
 }
 
 .close-btn {
