@@ -8,6 +8,7 @@ const MenuContext = React.createContext();
 const MenuProvider = ({children}) =>{
     const [loading, setLoading] = useState(false); 
     const [meals, setMeals] = useState(null);
+    const [selectedMeal, setSelectedMeal] = useState(null);
     const [searchValue, setSearchValue] = useState('');
     const [numCalls, setNumCalls] = useState(0);//keeps track of the number of calls made
 
@@ -24,6 +25,7 @@ const MenuProvider = ({children}) =>{
             const res = await fetch(url);
             const data = await res.json();
             setMeals(data.meals)
+            setSelectedMeal(data.meals[0])
             calls++
             setNumCalls(calls)
             localStorage.setItem('numCalls', JSON.stringify(calls))
@@ -31,13 +33,15 @@ const MenuProvider = ({children}) =>{
             console.log(err.message)
         }
         setLoading(false)
-    }
+    };
 
     const getRandomMeal = (e) =>{ 
         e.preventDefault();
         setSearchValue('');
         getMealData(randomMealUrl)
     };
+
+    const hideModal = () => setSelectedMeal(null);
 
     useEffect(() =>{
         if(!searchValue) return;
@@ -55,7 +59,9 @@ const MenuProvider = ({children}) =>{
             getMealData,
             allMealsUrl,
             setSearchValue,
-            getRandomMeal
+            getRandomMeal,
+            selectedMeal,
+            hideModal
         }}
     >
         {children}
