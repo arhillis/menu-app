@@ -399,7 +399,6 @@ ul {
     display: flex;
     align-items: center;
     color: var(--primary-500);
-    margin-bottom: 1rem;
     transition: var(--transition);
 }
 
@@ -418,6 +417,7 @@ ul {
 .close-btn {
     background: var(--red-dark);
     color: var(--white);
+    margin-top: 1rem;
 }
 
 footer {
