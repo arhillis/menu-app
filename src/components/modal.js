@@ -13,11 +13,14 @@ function Modal(){
                         <h3>{selectedMeal.strMeal}</h3>
                         <p>
                             {selectedMeal.strInstructions}
+                        </p>
                             <a href={selectedMeal.strYoutube} target='_new'>
                                 Watch on &nbsp;
                                 <AiFillYoutube size='2rem'/>
                             </a>
-                        </p>
+                            <a href={selectedMeal.strSource} target='_new'>
+                                View source
+                            </a>
                         <button className=' btn close-btn' onClick={hideModal}>Close</button>
                     </div>
                 </div>                
