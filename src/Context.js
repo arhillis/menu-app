@@ -43,6 +43,10 @@ const MenuProvider = ({children}) =>{
 
     const hideModal = () => setSelectedMeal(null);
 
+    const selectMeal = (id) =>{
+        setSelectedMeal(meals.find(meal => meal.idMeal === id))
+    }
+
     useEffect(() =>{
         if(!searchValue) return;
         getMealData(`${allMealsUrl}${searchValue}`)
@@ -61,7 +65,8 @@ const MenuProvider = ({children}) =>{
             setSearchValue,
             getRandomMeal,
             selectedMeal,
-            hideModal
+            hideModal,
+            selectMeal
         }}
     >
         {children}
