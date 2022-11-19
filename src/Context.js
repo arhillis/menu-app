@@ -9,26 +9,14 @@ const MenuProvider = ({children}) =>{
     const [loading, setLoading] = useState(false); 
     const [meals, setMeals] = useState(null);
     const [selectedMeal, setSelectedMeal] = useState(null);
-    const [searchValue, setSearchValue] = useState('');
-    const [numCalls, setNumCalls] = useState(0);//keeps track of the number of calls made
-
-    
-    console.log(`There have been ${numCalls} calls made...`)
+    const [searchValue, setSearchValue] = useState('');    
 
     const getMealData = async (url) =>{
         setLoading(true);
         try{
-            let calls = parseInt(localStorage.getItem('numCalls')) || 0;
-
-            if(calls)
-                setNumCalls(calls)
             const res = await fetch(url);
             const data = await res.json();
             setMeals(data.meals)
-            setSelectedMeal(data.meals[0])
-            calls++
-            setNumCalls(calls)
-            localStorage.setItem('numCalls', JSON.stringify(calls))
         }catch(err){
             console.log(err.message)
         }
