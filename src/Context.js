@@ -10,6 +10,9 @@ const MenuProvider = ({children}) =>{
     const [meals, setMeals] = useState(null);
     const [selectedMeal, setSelectedMeal] = useState(null);
     const [searchValue, setSearchValue] = useState('');    
+    const [favorites, setFavorites] = useState(
+            JSON.parse(localStorage.getItem('favorites')) ||
+        []);
 
     const getMealData = async (url) =>{
         setLoading(true);
@@ -35,14 +38,26 @@ const MenuProvider = ({children}) =>{
         setSelectedMeal(meals.find(meal => meal.idMeal === id))
     }
 
+    const saveFavorites = (meal) =>{
+        const {idMeal} = meal;
+        if(!favorites.find(mealItem => mealItem.idMeal === idMeal))
+            setFavorites([...favorites, meal])
+    }
+
     useEffect(() =>{
         if(!searchValue) return;
         getMealData(`${allMealsUrl}${searchValue}`)
     }, [searchValue])
 
     useEffect(() =>{
+        localStorage.setItem('favorites', JSON.stringify(favorites));
+    }, [favorites])
+
+    useEffect(() =>{
         getMealData(allMealsUrl)
     }, []);
+    
+    
 
     return <MenuContext.Provider
         value={{
@@ -54,7 +69,9 @@ const MenuProvider = ({children}) =>{
             getRandomMeal,
             selectedMeal,
             hideModal,
-            selectMeal
+            selectMeal,
+            favorites,
+            saveFavorites
         }}
     >
         {children}
