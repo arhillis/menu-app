@@ -1,7 +1,7 @@
 import { BsFillHeartFill } from "react-icons/bs";
 import {useMenuContext} from '../../Context';
 function Meal({meal}){
-    const {selectMeal, saveFavorites} = useMenuContext();
+    const {selectMeal, addToFavorites} = useMenuContext();
 
     return (<section className='single-meal'>
         <img src={meal.strMealThumb} alt={meal.strMeal}/>
@@ -13,7 +13,7 @@ function Meal({meal}){
                         Details
                 </button>
                 <button className="like-btn" 
-                    onClick={() => saveFavorites(meal)}>
+                    onClick={() => addToFavorites(meal)}>
                         <BsFillHeartFill />
                 </button>
             </div>
