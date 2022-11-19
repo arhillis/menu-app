@@ -26,6 +26,10 @@ const MenuProvider = ({children}) =>{
         setLoading(false)
     };
 
+    const getAllMeals = () =>{ 
+        getMealData(allMealsUrl)
+    };
+
     const getRandomMeal = (e) =>{ 
         e.preventDefault();
         setSearchValue('');
@@ -53,9 +57,7 @@ const MenuProvider = ({children}) =>{
         localStorage.setItem('favorites', JSON.stringify(favorites));
     }, [favorites])
 
-    useEffect(() =>{
-        getMealData(allMealsUrl)
-    }, []);
+    useEffect(() =>{ getAllMeals()}, []);
     
     
 
@@ -66,6 +68,7 @@ const MenuProvider = ({children}) =>{
             getMealData,
             allMealsUrl,
             setSearchValue,
+            getAllMeals,
             getRandomMeal,
             selectedMeal,
             hideModal,
