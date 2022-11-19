@@ -341,6 +341,12 @@ ul {
 
 .view-btn {
     font-size: 0.65rem;
+    background: var(--grey-100);
+    color: var(--textColor);
+}
+
+.view-btn:hover {
+    background: var(--grey-200);
 }
 
 .like-btn {
