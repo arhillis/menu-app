@@ -7,7 +7,11 @@ function Meal({meal}){
         <img src={meal.strMealThumb} alt={meal.strMeal}/>
         <footer>
             <h5>{meal.strMeal}</h5>
-            <button className="like-btn"><BsFillHeartFill /></button>
+            <div className="btn-row">
+                <button className="btn view-btn">View more</button>
+                <button className="like-btn"><BsFillHeartFill /></button>
+            </div>
+            
         </footer>
         
     </section>)

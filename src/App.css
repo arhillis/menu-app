@@ -331,13 +331,17 @@ ul {
 }
 
 .single-meal footer {
-    padding: 1rem 1.5rem;
-    /* display: flex;
-    align-items: center;
+    padding: 0.25rem 1rem 1rem 1rem;
+}
+
+.btn-row {
+    display: flex;
     justify-content: space-between;
-    flex-wrap: wrap; */
-    display: grid;
-    grid-template-columns: 3fr 1fr;
+    padding-top: 0.5rem;
+}
+
+.view-btn {
+    font-size: 0.65rem;
 }
 
 .like-btn {
@@ -420,7 +424,9 @@ ul {
     margin-top: 1rem;
 }
 
+
+/* 
 footer {
     display: grid;
     grid-template-columns: 3fr 1fr;
-}
+} */
