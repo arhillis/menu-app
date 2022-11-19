@@ -322,7 +322,6 @@ ul {
     aspect-ratio: 3/2;
     border-top-left-radius: var(--borderRadius);
     border-top-right-radius: var(--borderRadius);
-    cursor: pointer;
 }
 
 .single-meal h5 {
