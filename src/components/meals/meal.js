@@ -3,12 +3,12 @@ import {useMenuContext} from '../../Context';
 function Meal({meal}){
     const {selectMeal} = useMenuContext();
 
-    return (<section className='single-meal' onClick={() => selectMeal(meal.idMeal)}>
+    return (<section className='single-meal'>
         <img src={meal.strMealThumb} alt={meal.strMeal}/>
         <footer>
             <h5>{meal.strMeal}</h5>
             <div className="btn-row">
-                <button className="btn view-btn">View more</button>
+                <button className="btn view-btn" onClick={() => selectMeal(meal.idMeal)}>View more</button>
                 <button className="like-btn"><BsFillHeartFill /></button>
             </div>
             
