@@ -42,9 +42,13 @@ const MenuProvider = ({children}) =>{
         setSelectedMeal(meals.find(meal => meal.idMeal === id))
     }
 
+    const isFavorite = (id) =>{
+        return favorites.find(meal => meal.idMeal === id)
+    }
+
     const addToFavorites = (meal) =>{
         const {idMeal} = meal;
-        if(!favorites.find(mealItem => mealItem.idMeal === idMeal))
+        if(!isFavorite(idMeal))
             setFavorites([...favorites, meal])
     }
 
@@ -78,6 +82,7 @@ const MenuProvider = ({children}) =>{
             hideModal,
             selectMeal,
             favorites,
+            isFavorite,
             addToFavorites,
             removeFromFavorites
         }}

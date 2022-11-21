@@ -363,6 +363,22 @@ ul {
 }
 
 
+/* Favorite Single Meal*/
+
+.single-meal.favorite {
+    border: 0.5px solid var(--red-dark);
+}
+
+
+/* .single-meal.favorite .like-btn {
+    color: var(--red-dark);
+}
+
+.single-meal.favorite .like-btn:hover {
+    color: var(--red-light);
+} */
+
+
 /* Modal */
 
 .modal-overlay {

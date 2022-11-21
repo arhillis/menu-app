@@ -1,9 +1,10 @@
-import { BsFillHeartFill } from "react-icons/bs";
+import { BsFillHeartFill, BsXCircleFill } from "react-icons/bs";
 import {useMenuContext} from '../../Context';
 function Meal({meal}){
-    const {selectMeal, addToFavorites} = useMenuContext();
+    const {selectMeal, addToFavorites, removeFromFavorites, isFavorite} = useMenuContext();
+    const isFav = isFavorite(meal.idMeal)
 
-    return (<section className='single-meal'>
+    return (<section className={isFav ? 'single-meal favorite' : 'single-meal'}>
         <img src={meal.strMealThumb} alt={meal.strMeal}/>
         <footer>
             <h5>{meal.strMeal}</h5>
@@ -12,10 +13,20 @@ function Meal({meal}){
                     onClick={() => selectMeal(meal.idMeal)}>
                         Details
                 </button>
-                <button className="like-btn" 
-                    onClick={() => addToFavorites(meal)}>
+                {isFav ? (
+                    <button className="like-btn"
+                        onClick={() => removeFromFavorites(meal.idMeal)}
+                    >
+                        <BsXCircleFill />
+                    </button>
+                ) : (
+                    <button className="like-btn" 
+                            onClick={() => addToFavorites(meal)}>
                         <BsFillHeartFill />
-                </button>
+                    </button>
+                )}
+                
+                        
             </div>
             
         </footer>
