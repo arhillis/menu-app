@@ -48,6 +48,10 @@ const MenuProvider = ({children}) =>{
             setFavorites([...favorites, meal])
     }
 
+    const removeFromFavorites = (id) =>{
+        setFavorites(favorites.filter(meal => meal.idMeal !== id))
+    }
+
     useEffect(() =>{
         if(!searchValue) return;
         getMealData(`${allMealsUrl}${searchValue}`)
@@ -74,7 +78,8 @@ const MenuProvider = ({children}) =>{
             hideModal,
             selectMeal,
             favorites,
-            addToFavorites
+            addToFavorites,
+            removeFromFavorites
         }}
     >
         {children}
